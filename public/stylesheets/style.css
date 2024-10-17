@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+img {
+  width: 100%; /* или max-width: 100%; */
+  height: auto; /* сохраняем пропорции */
+  max-width: 200px; /* устанавливаем максимальную ширину */
+}
+
+h4 {
+  width: 800px;
+}
