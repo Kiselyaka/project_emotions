@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/emotion_7_1');
 
-var schema = mongoose.Schema({ name: String })
+var Emotion = require('./models/emotion.js').Emotion
 
-schema.methods.brbr = function(){
-    console.log(this.name + " к нам вернулось")
-    }
+var emotion = new Emotion({
+    title: "Радость",
+    nick : "radost",
+})
 
-const Emotion = mongoose.model('Emotion', schema);
-
-const emotion = new Emotion({ name: 'Счастье' });
-emotion.save().then(() => emotion.brbr ());
+emotion.save();
