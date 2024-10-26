@@ -26,12 +26,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var MongoStore = require('connect-mongo');
 app.use(session({
   secret: "Golovolomka_Emotions",
-  cookie:{maxAge:60*3000},
+  cookie:{maxAge:60*1000},
   proxy: true,
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: MongoStore.create({mongoUrl:
+    'mongodb://localhost/emotions2024'})
   }))
   
 app.use('/', indexRouter);
