@@ -22,14 +22,17 @@ var userSchema = new Schema({
     }
 })
 
-userSchema.virtual("password").set(function (password) {пш
+userSchema.virtual("password").set(function (password) 
+{
     this._purePassword = password
     this.salt = Math.random() + ""
     this.hashedPassword = this.encryptPassword(password)
-}).get(function () {
+}).get(function () 
+{
     return this._purePassword
 })
-userSchema.methods.encryptPassword = function (password) {
+userSchema.methods.encryptPassword = function (password) 
+{
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex')
 }
 
