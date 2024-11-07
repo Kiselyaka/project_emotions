@@ -22,7 +22,7 @@ var userSchema = new Schema({
     }
 })
 
-userSchema.virtual("password").set(function (password) {
+userSchema.virtual("password").set(function (password) {пш
     this._purePassword = password
     this.salt = Math.random() + ""
     this.hashedPassword = this.encryptPassword(password)
