@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Emotion = require('../models/emotion').Emotion;
-
+var checkAuth = require("../middlewares/checkAuth.js");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* Страница эмоций */
-router.get("/:nick", async function(req, res, next) 
+router.get("/:nick", checkAuth, async function(req, res, next) 
 {
     var emotions = await Emotion.find({nick: req.params.nick});
     console.log(emotions)
